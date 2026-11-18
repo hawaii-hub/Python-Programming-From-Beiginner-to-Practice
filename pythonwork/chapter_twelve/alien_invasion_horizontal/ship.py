@@ -1,0 +1,41 @@
+import pygame
+
+class Ship:
+    """管理飞船的类"""
+
+    def __init__(self, ai_game):
+        """初始化飞船并设置其初始位置"""
+        self.screen = ai_game.screen
+        self.settings = ai_game.settings
+        self.screen_rect = ai_game.screen.get_rect()
+
+        # 加载飞船图像并获取其外接矩形
+        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.transform.rotate(self.image, -90)   # ← 加这一行: 顺时针转 90 度        
+        self.rect = self.image.get_rect()
+
+        #每艘新飞船图像都放在屏幕底部的中央
+        self.rect.midleft = self.screen_rect.midleft
+
+        # 在飞船的属性y 中储存一个浮点数
+        self.y = float(self.rect.y)
+
+        # 移动标志 (飞船一开始不移动)
+        self.moving_up = False
+        self.moving_down = False
+
+    def update(self):
+        """根据移动标志调整飞船的位置"""
+        # 更新飞船的属性x的值, 而不是其外接矩形的属性y的值
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+            self.y += self.settings.ship_speed
+        if self.moving_up and self.rect.top > 0:
+            self.y -= self.settings.ship_speed
+
+        # 根据self.y 更新rect 对象
+        self.rect.y = self.y
+        
+
+    def blitme(self):
+        """在指定位置绘制飞船"""
+        self.screen.blit(self.image, self.rect)
