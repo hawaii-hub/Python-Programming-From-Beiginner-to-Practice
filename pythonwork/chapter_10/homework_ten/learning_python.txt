@@ -1,0 +1,12 @@
+In Python you can read and write files easily.
+In Python you can create your own classes and objects.
+In Python you can handle errors without crashing your program.
+In Python you can work with lists, dictionaries and tuples.
+In Python you can write loops to repeat tasks automatically.
+In Python you can import modules to reuse orther people's code.
+In Python you can process text with strings and regular expressions.
+In Python you can build web applications and games.
+In Python you can analyze data and create visualizations.
+In Python you can automate boring, repetitive tasks.
+In Python you can define functions to organize your code.
+In Python you can use exceptions to deal with unexpected problems.
